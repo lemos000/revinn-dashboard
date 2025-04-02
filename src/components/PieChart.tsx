@@ -1,4 +1,4 @@
-import { Pie } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   ArcElement,
@@ -7,6 +7,8 @@ import {
 } from 'chart.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
+
+
 
 const data = {
   labels: ['Nova York', 'São Paulo', 'Rio de Janeiro'],
@@ -19,6 +21,7 @@ const data = {
   ],
 };
 
+
 export default function PieChart() {
-  return <Pie data={data} />;
+  return <Doughnut data={data}/>;
 }

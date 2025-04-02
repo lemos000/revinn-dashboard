@@ -12,11 +12,13 @@ import {
 
 
 const data = {
-  labels: ['01/12', '05/12', '09/12', '12/12', '15/12', '22/12', '31/12'],
+  labels: Array.from({ length: 31 }, (_, i) => `${String(i + 1).padStart(2, '0')}/12`),
   datasets: [
     {
       label: 'Demanda Aérea',
-      data: [200, 450, 300, 500, 800, 600, 1000],
+      data: Array.from({ length: 31 }, (_, i) => 
+        Math.floor(5000 + 1000 * Math.sin(i / 2) + Math.random() * 500)
+      ),
       borderColor: '#4CAF50',
       fill: false,
     },
