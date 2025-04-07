@@ -19,7 +19,7 @@ const data = {
       data: Array.from({ length: 31 }, (_, i) => 
         Math.floor(5000 + 1000 * Math.sin(i / 2) + Math.random() * 500)
       ),
-      borderColor: '#4CAF50',
+      borderColor: '#0d9488',
       fill: false,
     },
   ],

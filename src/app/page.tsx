@@ -7,13 +7,12 @@ import DailyForecastCard from "../components/DailyForecastCard";
 import FinancialMarket from "../components/FinancialMarket";
 import Events from "@/components/Events";
 import "../components/fontawesome";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { faBuilding } from "@fortawesome/free-regular-svg-icons";
+import CustomDropdown from "../components/CustomDropdown";
 import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlaneDeparture, faSun, faDollarSign } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
-
   const [selectedHotel, setSelectedHotel] = useState({
     name: "Castelo de Itaipava",
     city: "Petrópolis",
@@ -26,58 +25,56 @@ export default function Home() {
     { name: "Copacabana Palace", city: "Rio de Janeiro", state: "RJ" },
     { name: "Hotel Unique", city: "São Paulo", state: "SP" },
     { name: "Belmond Hotel das Cataratas", city: "Foz do Iguaçu", state: "PR" },
-    // Adicione mais hotéis aqui
+    { name: "Biruleibe leibe", city: "Foz do Pirocu", state: "PA" },
+    { name: "LemosLandia Hotel", city: "ZL do Maranhão", state: "MA" },
   ];
-
-  const handleHotelChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selected = hotels.find((hotel) => hotel.name === event.target.value);
-    if (selected) {
-      setSelectedHotel(selected);
-    }
-  };
 
   return (
     <div className="bg-gray-100 max-h-[90rem]">
-     <Header>
-  <div className="flex items-center bg-white rounded-full px-3 py-4 shadow-md">
-    <FontAwesomeIcon icon={faBuilding} className="text-teal-600 pl-4 pr-6 text-2xl" />
-    <select
-      className="bg-white text-black font-medium outline-none appearance-none pr-6"
-      value={selectedHotel.name}
-      onChange={handleHotelChange}
-    >
-      {hotels.map((hotel) => (
-        <option key={hotel.name} className="text-black" value={hotel.name}>
-          {hotel.name}
-        </option>
-      ))}
-    </select>
-    <FontAwesomeIcon icon={faChevronDown} className="text-teal-600 mr-4 text-sm" />
+      <Header>
+        <CustomDropdown
+          hotels={hotels}
+          selectedHotel={selectedHotel}
+          onChange={setSelectedHotel}
+        />
+      </Header>
+
+      <main className="p-6 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 xl:grid-rows-1 gap-6 -mt-7">
+  <div className="bg-white p-6 rounded-2xl shadow-md col-span-1 xl:col-span-2">
+    <h2 className="text-xl font-semibold text-teal-600 flex items-center gap-2 pb-3">
+    Demanda Aérea  
+      <FontAwesomeIcon icon={faPlaneDeparture} className="text-teal-600 text-xl" />
+    </h2>
+    <LineChart hotel={selectedHotel} />
   </div>
-</Header>
-      <main className="p-6 grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-4 xl:grid-rows-1 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow-md col-span-1 xl:col-span-2">
-          <h2 className="text-lg font-semibold">Demanda Aérea</h2>
-          <LineChart hotel={selectedHotel} />
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-lg font-semibold">Top Origens</h2>
-          <PieChart hotel={selectedHotel} />
-        </div>
-        <div className="bg-white p-6 h-full rounded-lg shadow-md xl:row-span-2 xl:col-span-1">
-          <h2 className="text-lg font-semibold">Próximos Eventos</h2>
-          <Events hotel={selectedHotel} />
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md xl:col-span-2">
-          <h2 className="text-lg font-semibold">Previsão Diária</h2>
-          <DailyForecastCard hotel={selectedHotel} />
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-lg font-semibold">Mercado Financeiro</h2>
-          <FinancialMarket hotel={selectedHotel} />
-        </div>
-      </main>
+
+  <div className="bg-white p-6 rounded-2xl shadow-md">
+    <h2 className="text-xl font-semibold text-teal-600 pb-3">Top Origens</h2>
+    <PieChart hotel={selectedHotel} />
+  </div>
+
+  <div className="bg-white p-6 h-full rounded-2xl shadow-md xl:row-span-2 xl:col-span-1">
+    <h2 className="text-xl font-semibold text-teal-600 pb-3">Próximos Eventos</h2>
+    <Events hotel={selectedHotel} />
+  </div>
+
+  <div className="bg-white p-6 rounded-2xl shadow-md xl:col-span-2">
+    <h2 className="text-xl font-semibold text-teal-600 flex items-center gap-2 pb-3">
+    Previsão Diária  
+      <FontAwesomeIcon icon={faSun} className="text-teal-600 text-xl" />
+    </h2>
+    <DailyForecastCard hotel={selectedHotel} />
+  </div>
+
+  <div className="bg-white p-6 rounded-2xl shadow-md">
+    <h2 className="text-xl font-semibold text-teal-600 flex items-center gap-2 pb-3">
+    Mercado Financeiro  
+      <FontAwesomeIcon icon={faDollarSign} className="text-teal-600 text-xl" />
+    </h2>
+    <FinancialMarket hotel={selectedHotel} />
+  </div>
+</main>
+
     </div>
- 
   );
 }

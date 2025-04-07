@@ -1,8 +1,23 @@
-@import "tailwindcss";
+/* Importa a fonte primeiro */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+/* Depois importa o Tailwind */
+@import "tailwindcss";
 
-
-body {
-  font-family: 'Poppins', sans-serif;
+/* Scrollbar custom */
+::-webkit-scrollbar {
+  width: 8px;
 }
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #0d9488;
+  border-radius: 10px;
+}
+
+/* Tailwind layers */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+

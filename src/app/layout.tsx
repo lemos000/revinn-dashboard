@@ -13,10 +13,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-br">
-      <body 
-      >
-        {children}
-      </body>
+      <body className="font-sans">
+    {children}
+  </body>
     </html>
   );
 }
