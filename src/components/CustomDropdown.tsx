@@ -1,17 +1,21 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBuilding } from "@fortawesome/free-regular-svg-icons";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
-export default function CustomDropdown({ hotels, selectedHotel, onChange }) {
+
+interface CustomDropdownProps {
+  hotels: { name: string }[];
+  selectedHotel: { name: string };
+  onChange: (hotel: { name: string }) => void;
+}
+
+export default function CustomDropdown({ hotels, selectedHotel, onChange }: CustomDropdownProps) {
   const [open, setOpen] = useState(false);
-  const dropdownRef = useRef(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleClickOutside = (event: any) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setOpen(false);
       }
     };
@@ -26,10 +30,8 @@ export default function CustomDropdown({ hotels, selectedHotel, onChange }) {
         onClick={() => setOpen(!open)}
       >
         <div className="flex items-center gap-3">
-          <FontAwesomeIcon icon={faBuilding} className="text-teal-600 text-3xl pr-5 pl-1" />
           <span className="text-black font-medium text-lg">{selectedHotel.name}</span>
         </div>
-        <FontAwesomeIcon icon={faChevronDown} className="text-teal-600 text-xl mr-0" />
       </div>
      
       {open && (
@@ -43,7 +45,6 @@ export default function CustomDropdown({ hotels, selectedHotel, onChange }) {
           setOpen(false);
         }}
       >
-        <FontAwesomeIcon icon={faBuilding} className="text-teal-600 text-2xl pr-4" />
         <span className="text-black">{hotel.name}</span>
       </div>
     ))}

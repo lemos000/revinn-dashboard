@@ -1,7 +1,5 @@
 import Image from "next/image";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faForwardFast } from "@fortawesome/free-solid-svg-icons";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+
 
 export default function Header({ children }: { children?: React.ReactNode }) {
   return (
@@ -25,7 +23,6 @@ export default function Header({ children }: { children?: React.ReactNode }) {
           onClick={() => console.log("Iniciar automação")}
           className="w-17 h-17 bg-white rounded-2xl shadow-md flex items-center justify-center text-teal-600 hover:scale-105 transition cursor-pointer"
         >
-          <FontAwesomeIcon icon={faForwardFast} className="text-xl" />
         </button>
 
         {/* Botão logout */}
@@ -33,7 +30,6 @@ export default function Header({ children }: { children?: React.ReactNode }) {
           onClick={() => console.log("Logout")}
           className="w-17 h-17 bg-white rounded-2xl shadow-md flex items-center justify-center text-teal-600 hover:scale-105 transition cursor-pointer mr-5"
         >
-          <FontAwesomeIcon icon={faUser} className="text-xl" />
         </button>
       </div>
     </header>

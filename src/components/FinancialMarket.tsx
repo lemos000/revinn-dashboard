@@ -1,5 +1,4 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUp, faArrowDown, faDollarSign, faChartLine } from "@fortawesome/free-solid-svg-icons";
+
 import React from "react";
 
 interface MarketProps {
@@ -30,7 +29,6 @@ export default function FinancialMarket() {
         >
           {market.name.includes("Bitcoin") ? (
             <div className="flex items-center gap-3">
-              <FontAwesomeIcon icon={faDollarSign} className="text-teal-600 text-3xl" />
               <div>
                 <p className="text-sm text-gray-600">{market.name}</p>
                 <p className="text-lg font-bold">{market.value}</p>
@@ -44,10 +42,7 @@ export default function FinancialMarket() {
               <p className="text-sm text-gray-600">{market.name}</p>
               <div className="flex items-center gap-2">
                 <p className="text-xl font-bold">{market.value}</p> {/* AUMENTADO AQUI */}
-                <FontAwesomeIcon
-                  icon={market.color === "green" ? faArrowUp : faArrowDown}
-                  className={`text-md ${colorClass[market.color]}`}
-                />
+               
                 <span className={`text-sm font-semibold ${colorClass[market.color]}`}>
                   {market.change}
                 </span>
@@ -55,9 +50,7 @@ export default function FinancialMarket() {
             </div>
           )}
 
-          {market.name.includes("Bitcoin") && (
-            <FontAwesomeIcon icon={faChartLine} className="text-teal-600 text-2xl" />
-          )}
+          {market.name.includes("Bitcoin") }
         </div>
       ))}
     </div>

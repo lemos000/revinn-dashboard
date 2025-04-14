@@ -9,8 +9,7 @@ import Events from "@/components/Events";
 import "../components/fontawesome";
 import CustomDropdown from "../components/CustomDropdown";
 import { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlaneDeparture, faSun, faDollarSign } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function Home() {
   const [selectedHotel, setSelectedHotel] = useState({
@@ -43,7 +42,6 @@ export default function Home() {
         <div className="bg-white p-6 rounded-2xl shadow-lg col-span-1 xl:col-span-2">
           <h2 className="text-2xl font-bold text-teal-600 flex items-center gap-2 pb-3">
             Demanda Aérea
-            <FontAwesomeIcon icon={faPlaneDeparture} className="text-teal-600 text-xl" />
           </h2>
           <LineChart hotel={selectedHotel} />
         </div>
@@ -61,7 +59,6 @@ export default function Home() {
         <div className="bg-white p-6 rounded-2xl shadow-lg xl:col-span-2">
           <h2 className="text-2xl font-bold text-teal-600 flex items-center gap-2 pb-3">
             Previsão Diária
-            <FontAwesomeIcon icon={faSun} className="text-teal-600 text-xl" />
           </h2>
           <DailyForecastCard hotel={selectedHotel} />
         </div>
@@ -69,7 +66,6 @@ export default function Home() {
         <div className="bg-white p-6 rounded-2xl shadow-lg xl:col-span-2">
           <h2 className="text-2xl font-bold text-teal-600 flex items-center gap-2 pb-3">
             Mercado Financeiro
-            <FontAwesomeIcon icon={faDollarSign} className="text-teal-600 text-xl" />
           </h2>
           <FinancialMarket hotel={selectedHotel} />
         </div>
